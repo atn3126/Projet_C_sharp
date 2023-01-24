@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Map carte = new Map();
+            carte.Affichage();
+
         }
     }
 }
