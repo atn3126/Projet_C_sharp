@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Projet_C_sharp
 {
@@ -21,39 +22,54 @@ namespace Projet_C_sharp
             Player player = new Player();
             player.x = 5;
             player.y = 8;
-            _map = new char[20, 20];
-            
+            _map = new char[60, 242];
+
+
             Init(player);
 
         }
         public int Init(Player player)
         {
-            for (int i = 0; i < _map.GetLength(0); i++)
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\map3.txt");
+
+            int x = 0;
+            foreach (string line in lines)
             {
-                for (int j = 0; j < _map.GetLength(1); j++)
+                int y = 0;
+                foreach (char c in line)
                 {
-                    if (player.x == i && player.y == j)
+                    if (player.x == x && player.y == y)
                     {
-                        _map[i, j] = '-';
+                        _map[x, y] = '0';
                     }
                     else
                     {
-                        _map[i, j] = 'X';
+                        _map[x, y] = c;
                     }
-
+                    y++;
                 }
-                
+                x++;
             }
-            
             return 0;
         }
         public void Affichage()
         {
             for (int i = 0; i < _map.GetLength(0); i++)
             {
-                Console.WriteLine();
                 for (int j = 0; j < _map.GetLength(1); j++)
                 {
+                    if (_map[i,j] == '#')
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    }
+                    else if (_map[i, j] == '$')
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
                     Console.Write(_map[i,j]);
                 }
 
