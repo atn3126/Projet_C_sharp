@@ -1,4 +1,4 @@
-﻿using ConsoleApp;
+﻿/*using ConsoleApp;
 
 namespace StringManipulation
 {
@@ -54,3 +54,4 @@ namespace StringManipulation
             Console.ReadLine();
         }
     }
+}*/

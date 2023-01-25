@@ -29,13 +29,13 @@ namespace Projet_C_sharp
         {
             string[] lines = System.IO.File.ReadAllLines(@"..\..\..\map3.txt");
 
-            FileStream fileStream = File.Open("map3.text", FileMode.Open);
+            /*FileStream fileStream = File.Open("map3.text", FileMode.Open);
             fileStream.Dispose();
             using (FileStream fileStream2 = File.Open("map3.txt", FileMode.Open))
             {
 
             }
-
+            */
 
 
             int x = 0;
