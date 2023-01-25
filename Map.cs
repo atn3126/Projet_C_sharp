@@ -8,17 +8,14 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Projet_C_sharp
 {
-    struct Player
-    {
-        public int x;
-        public int y;
-    }
-    internal class Map
+    
+    public class Map
     {
         char[,] _map;
         
         public Map()
         {
+            Console.Clear();
             Player player = new Player();
             player.x = 5;
             player.y = 8;
@@ -84,13 +81,15 @@ namespace Projet_C_sharp
                 }
 
             }
+            ConsoleKeyInfo cki;
+            do
+            {
+                cki = Console.ReadKey();
+                Console.Write(" --- You pressed ");
+                Console.WriteLine(cki.Key.ToString());
+            } while (cki.Key != ConsoleKey.Escape);
         }
-        public void Deplacement()
-        {
-
-            Console.WriteLine("Deplacement fait avec succée");
-
-        }
+        
 
         //Input pour afficher le Menu pause et l'invenataire ! NE PAS TOUCHER !
 
