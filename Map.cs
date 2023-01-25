@@ -32,6 +32,15 @@ namespace Projet_C_sharp
         {
             string[] lines = System.IO.File.ReadAllLines(@"..\..\..\map3.txt");
 
+            FileStream fileStream = File.Open("map3.text", FileMode.Open);
+            fileStream.Dispose();
+            using (FileStream fileStream2 = File.Open("map3.txt", FileMode.Open))
+            {
+
+            }
+
+
+
             int x = 0;
             foreach (string line in lines)
             {
@@ -50,6 +59,7 @@ namespace Projet_C_sharp
                 }
                 x++;
             }
+
             return 0;
         }
         public void Affichage()
@@ -81,9 +91,5 @@ namespace Projet_C_sharp
             Console.WriteLine("Deplacement fait avec succée");
 
         }
-
-
-
-
     }
 }
