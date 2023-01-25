@@ -81,13 +81,6 @@ namespace Projet_C_sharp
                 }
 
             }
-            ConsoleKeyInfo cki;
-            do
-            {
-                cki = Console.ReadKey();
-                Console.Write(" --- You pressed ");
-                Console.WriteLine(cki.Key.ToString());
-            } while (cki.Key != ConsoleKey.Escape);
         }
         
 
