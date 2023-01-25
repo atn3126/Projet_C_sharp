@@ -82,7 +82,18 @@ namespace Projet_C_sharp
 
         }
 
+        //Input pour afficher le Menu pause et l'invenataire ! NE PAS TOUCHER !
 
+       /* public void Input()
+        {
+            ConsoleKeyInfo cki;
+
+            cki = Console.ReadKey();
+            if(cki.Key != ConsoleKey.Escape)
+            {
+                Console.WriteLine("test");
+            }
+        }*/
 
 
     }
