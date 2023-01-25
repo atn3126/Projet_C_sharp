@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -91,5 +91,20 @@ namespace Projet_C_sharp
             Console.WriteLine("Deplacement fait avec succée");
 
         }
+
+        //Input pour afficher le Menu pause et l'invenataire ! NE PAS TOUCHER !
+
+       /* public void Input()
+        {
+            ConsoleKeyInfo cki;
+
+            cki = Console.ReadKey();
+            if(cki.Key != ConsoleKey.Escape)
+            {
+                Console.WriteLine("test");
+            }
+        }*/
+
+
     }
 }
