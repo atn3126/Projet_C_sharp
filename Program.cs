@@ -4,7 +4,8 @@
     {
         static int Main(string[] args)
         {
-            Map carte = new Map();
+            Player player = new Player();
+            Map carte = new Map(player);
             bool game = false;
             bool menu = false;
             bool pause = false;
@@ -47,18 +48,23 @@
                     }
                 }
 
-
-                carte.Affichage();
+                carte.Update(player);
+                carte.Affichage(player);
                 statut = Console.ReadKey();
 
+                player.Deplacement(statut);
 
-                if (statut.Key == ConsoleKey.Escape)       //Ouvre la pause si 'Echap' est appuyer
+                if (statut.Key == ConsoleKey.Escape)       //Ouvre la pause si 'Echap' est appuyé
                 {
                     pause = true;
                 }
-                if (statut.Key == ConsoleKey.Tab)       //Ouvre l'inventaire si 'TAB' est appuyer
+                if (statut.Key == ConsoleKey.Tab)       //Ouvre l'inventaire si 'TAB' est appuyé
                 {
                     inventaire = true;
+                }
+                if (statut.Key == ConsoleKey.Backspace)       //Ferme le jeu si 'backspace' est appuyé
+                {
+                    game = true;
                 }
 
             }

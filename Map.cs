@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
+using System.Numerics;
 
 namespace Projet_C_sharp
 {
@@ -13,31 +14,46 @@ namespace Projet_C_sharp
     {
         char[,] _map;
         
-        public Map()
+        public Map(Player player)
         {
             Console.Clear();
-            Player player = new Player();
-            player.x = 5;
-            player.y = 8;
             _map = new char[60, 242];
 
 
-            Init(player);
+            Init();
 
         }
-        public int Init(Player player)
+        public int Init()
         {
             string[] lines = System.IO.File.ReadAllLines(@"..\..\..\map3.txt");
-
-            /*FileStream fileStream = File.Open("map3.text", FileMode.Open);
+/*
+            FileStream fileStream = File.Open("map3.text", FileMode.Open);
             fileStream.Dispose();
             using (FileStream fileStream2 = File.Open("map3.txt", FileMode.Open))
             {
 
+            }*/
+
+
+
+            int x = 0;
+            foreach (string line in lines)
+            {
+                int y = 0;
+                foreach (char c in line)
+                {
+                    _map[x, y] = c;
+                    y++;
+                }
+                x++;
             }
-            */
 
+            return 0;
+        }
 
+        public int Update(Player player)
+        {
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\map3.txt");
             int x = 0;
             foreach (string line in lines)
             {
@@ -59,12 +75,15 @@ namespace Projet_C_sharp
 
             return 0;
         }
-        public void Affichage()
+
+        public void Affichage(Player player)
         {
+            Console.Clear();
             for (int i = 0; i < _map.GetLength(0); i++)
             {
                 for (int j = 0; j < _map.GetLength(1); j++)
                 {
+                    
                     if (_map[i,j] == '#')
                     {
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -81,13 +100,6 @@ namespace Projet_C_sharp
                 }
 
             }
-            ConsoleKeyInfo cki;
-            do
-            {
-                cki = Console.ReadKey();
-                Console.Write(" --- You pressed ");
-                Console.WriteLine(cki.Key.ToString());
-            } while (cki.Key != ConsoleKey.Escape);
         }
         
 
