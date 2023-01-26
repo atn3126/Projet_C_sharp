@@ -6,21 +6,43 @@
         {
             Player player = new Player();
             Map carte = new Map(player);
+            Menu_P menu_p = new Menu_P();
             bool game = false;
-            bool menu = false;
+            bool menu = true;
             bool pause = false;
             bool inventaire = false;
             ConsoleKeyInfo statut;
 
-            while (game == false)            //Boucle de jeu
+            
+            while (menu == true)        //boucle menu principal jusqu'a que le "jeu" se lance
             {
 
-                while (menu == true)        //boucle menu principal jusqu'a que le "jeu" se lance
+                switch (menu_p.principal())
                 {
+                    case "D1":
 
-                //code affichage menu
+                        menu = false;      
+                        game = true;
+                        Console.Clear();
+                        Console.WriteLine();
+                        break;
 
+                    case "D2":
+                        menu = false;
+                        break;
+
+                    case "D3":
+                        menu = false;
+                        game = false;
+                        break;
                 }
+
+            }            
+            
+            while (game == true)           //Boucle de jeu
+            {
+
+
 
                 while (inventaire == true)  //boucle d'inventaire jusqu'a que la touche 'tab' soit de nouveau appuyer
                 {
