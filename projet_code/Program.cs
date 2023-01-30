@@ -7,6 +7,7 @@
             Player player = new Player();
             Map carte = new Map(player);
             Menu_P menu_p = new Menu_P();
+            Equipe equipe = new Equipe();
             bool game = false;
             bool menu = true;
             bool pause = false;

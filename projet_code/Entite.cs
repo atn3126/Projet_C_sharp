@@ -12,10 +12,12 @@ namespace Projet_C_sharp
         protected int _Mana;       //{ get; set; }
         protected int _Defense;    //{ get; set; }
         protected int _Attack;     //{ get; set; }
-        protected int _Agility;     //{ get; set; }
+        protected int _Agility;    //{ get; set; }
+        protected string _Tag;     //{ get; set; }
+
 
         protected int _BuffAttack;     //{ get; set; }
-        protected int _BuffDefense;     //{ get; set; }
+        protected int _BuffDefense;    //{ get; set; }
 
 
 
@@ -34,26 +36,31 @@ namespace Projet_C_sharp
                     _Defense = 12;
                     _Attack= 15;
                     _Agility = 11;
+                    _Tag = "chevalier";
 
                     _BuffAttack = 0;
                     _BuffDefense = 0;
                     break;
+                
                 case "archer":
                     _Hp = 90;
                     _Mana = 12;
                     _Defense = 7;
                     _Attack = 11;
                     _Agility = 35;
+                    _Tag = "archer";
 
                     _BuffAttack = 0;
                     _BuffDefense = 0;
                     break;
+
                 case "mage":
                     _Hp = 110;
                     _Mana = 60;
                     _Defense = 5;
                     _Attack = 13;
                     _Agility = 18;
+                    _Tag = "mage";
 
                     _BuffAttack = 0;
                     _BuffDefense = 0;
@@ -61,15 +68,50 @@ namespace Projet_C_sharp
 
                 case "Loup":           //Enemie
                     _Hp = 50;
+                    _Mana = 0;
+                    _Defense = 5;
+                    _Attack = 8;
+                    _Agility = 22;
+                    _Tag = "Loup";
+
+                    _BuffAttack = 0;
+                    _BuffDefense = 0;
                     break;
+
                 case "Gobelin":
-                    _Hp = 50;
+                    _Hp = 90;
+                    _Mana = 0;
+                    _Defense = 6;
+                    _Attack = 11;
+                    _Agility = 18;
+                    _Tag = "Gobelin";
+
+                    _BuffAttack = 0;
+                    _BuffDefense = 0;
                     break;
+
                 case "Orc":
-                    _Hp = 50;
+                    _Hp = 160;
+                    _Mana = 12;
+                    _Defense = 10;
+                    _Attack = 13;
+                    _Agility = 3;
+                    _Tag = "Orc";
+
+                    _BuffAttack = 0;
+                    _BuffDefense = 0;
                     break;
+
                 case "Mage_noir":
-                    _Hp = 50;
+                    _Hp = 999;
+                    _Mana = 999;
+                    _Defense = 999;
+                    _Attack = 999;
+                    _Agility = 99;
+                    _Tag = "Mage_noir";
+
+                    _BuffAttack = 0;
+                    _BuffDefense = 0;
                     break;
 
             }
@@ -98,7 +140,7 @@ namespace Projet_C_sharp
                 return 1;               //Esquive avec succée
             }
 
-            return 0;                   //Echou et sera attaqué 
+            return 0;                   //Echoue et sera attaqué 
         }
 
 
