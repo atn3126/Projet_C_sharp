@@ -47,7 +47,7 @@ namespace Projet_C_sharp
                 }
                 x++;
             }
-
+            Affichage();
             return 0;
         }
 
@@ -79,12 +79,21 @@ namespace Projet_C_sharp
         public void Affichage(Player player)
         {
             Console.Clear();
-            for (int i = 0; i < _map.GetLength(0); i++)
+            int view = 10;
+            int x1 = player.x - view;
+            int x2 = player.x + view;
+            int y1 = player.y - view * 3;
+            int y2 = player.y + view * 3;
+            if (x1 < 0) { x1 = 0; }
+            if (x2 > _map.GetLength(0)) { x2 = _map.GetLength(0); }
+            if (y1 < 0) { y1 = 0; }
+            if (y2 > _map.GetLength(1)) { y2 = _map.GetLength(1); }
+            for (int i = x1; i < x2; i++)
             {
-                for (int j = 0; j < _map.GetLength(1); j++)
+                for (int j = y1; j < y2; j++)
                 {
-                    
-                    if (_map[i,j] == '#')
+
+                    if (_map[i, j] == '#')
                     {
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
                     }
@@ -96,25 +105,74 @@ namespace Projet_C_sharp
                     {
                         Console.ForegroundColor = ConsoleColor.White;
                     }
-                    Console.Write(_map[i,j]);
+                    Console.Write(_map[i, j]);
                 }
-
+                Console.WriteLine();
             }
         }
-        
+
+        public void Affichage()
+        {
+            for (int i = 0; i < _map.GetLength(0); i++)
+            {
+                for (int j = 0; j < _map.GetLength(1); j++)
+                {
+
+                    if (_map[i, j] == '#')
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    }
+                    else if (_map[i, j] == '$')
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    Console.Write(_map[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        public bool OnBush(Player player)
+        {
+            return _map[player.x, player.y] == '*';
+        }
+
+       /* public void AffichePlayer(Player player)
+        {
+            for (int i = 0; i < _map.GetLength(0); i++)
+            {
+                for (int j = 0; j < _map.GetLength(1); j++)
+                {
+                    if (player.x == i && player.y == j)
+                    {
+                        Console.Write('0');
+                    }
+                    else
+                    {
+                        Console.Write(' ');
+                    }
+                }
+                Console.WriteLine();
+            }
+        }*/
+
 
         //Input pour afficher le Menu pause et l'invenataire ! NE PAS TOUCHER !
 
-       /* public void Input()
-        {
-            ConsoleKeyInfo cki;
+        /* public void Input()
+         {
+             ConsoleKeyInfo cki;
 
-            cki = Console.ReadKey();
-            if(cki.Key != ConsoleKey.Escape)
-            {
-                Console.WriteLine("test");
-            }
-        }*/
+             cki = Console.ReadKey();
+             if(cki.Key != ConsoleKey.Escape)
+             {
+                 Console.WriteLine("test");
+             }
+         }*/
 
 
     }

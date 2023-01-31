@@ -12,6 +12,7 @@
             bool menu = true;
             bool pause = false;
             bool inventaire = false;
+            bool _inBattle = false;
             ConsoleKeyInfo statut;
 
             
@@ -76,6 +77,20 @@
                 statut = Console.ReadKey();
 
                 player.Deplacement(statut);
+
+                if (carte.OnBush(player) == true)
+                {
+                    Random random = new Random();
+                    if (random.Next(0, 100) < 4)
+                    {
+                        _inBattle = true;
+                    }
+                }
+
+                while (_inBattle== true)
+                {
+                    Battle battle = new Battle();
+                }
 
                 if (statut.Key == ConsoleKey.Escape)       //Ouvre la pause si 'Echap' est appuyé
                 {
