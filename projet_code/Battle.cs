@@ -10,11 +10,24 @@ namespace Projet_C_sharp
     internal class Battle
     {
         char[,] _battle;
+        string enemy;
 
         public Battle() 
         {
             Console.Clear();
-            _battle = new char[60, 150];
+            _battle = new char[27, 150];
+            Random random = new Random();
+            int i = random.Next(0, 100);
+            if (random.Next(0, 100) < 50)
+                enemy = "Loup";
+            else if (random.Next(0, 100) < 85)
+                enemy = "Gobelin";
+            else if (random.Next(0, 100) < 99)
+                enemy = "Orc";
+            else
+                enemy = "Mage_noir";
+            Entite monster = new Entite(enemy);
+            Init();
         }
 
         public int Init()
@@ -31,6 +44,9 @@ namespace Projet_C_sharp
                 }
                 x++;
             }
+            Console.WriteLine("\n      You encounter " + enemy + ".");
+            Affichage();
+
             return 0;
         }
 

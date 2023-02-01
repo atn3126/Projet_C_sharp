@@ -13,18 +13,15 @@ namespace Projet_C_sharp
         string current_player;
         public Equipe()
         {
-            Entite chevalier = new Entite();
-            chevalier.entity_type("chevalier");
+            Entite chevalier = new Entite("chevalier");
             list_equipe[0] = "chevalier";
             current_player = "chevalier";
 
 
-            Entite archer = new Entite();
-            archer.entity_type("archer");
+            Entite archer = new Entite("archer");
             list_equipe[1] = "archer";
 
-            Entite mage = new Entite();
-            mage.entity_type("mage");
+            Entite mage = new Entite("mage");
             list_equipe[2] = "mage";
 
 

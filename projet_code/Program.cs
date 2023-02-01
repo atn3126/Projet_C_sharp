@@ -83,13 +83,14 @@
                     Random random = new Random();
                     if (random.Next(0, 100) < 4)
                     {
+                        Battle battle = new Battle();
                         _inBattle = true;
                     }
                 }
 
                 while (_inBattle== true)
                 {
-                    Battle battle = new Battle();
+                    
                 }
 
                 if (statut.Key == ConsoleKey.Escape)       //Ouvre la pause si 'Echap' est appuyé

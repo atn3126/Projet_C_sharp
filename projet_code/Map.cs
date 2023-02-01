@@ -47,7 +47,6 @@ namespace Projet_C_sharp
                 }
                 x++;
             }
-            Affichage();
             return 0;
         }
 
@@ -96,14 +95,22 @@ namespace Projet_C_sharp
                     if (_map[i, j] == '#')
                     {
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
                     }
                     else if (_map[i, j] == '$')
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.BackgroundColor = ConsoleColor.Yellow;
+                    }
+                    else if (_map[i, j] == '*')
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.BackgroundColor = ConsoleColor.Black;
                     }
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.White;
+                        Console.BackgroundColor = ConsoleColor.Black;
                     }
                     Console.Write(_map[i, j]);
                 }
@@ -111,7 +118,7 @@ namespace Projet_C_sharp
             }
         }
 
-        public void Affichage()
+        /*public void Affichage()
         {
             for (int i = 0; i < _map.GetLength(0); i++)
             {
@@ -121,20 +128,23 @@ namespace Projet_C_sharp
                     if (_map[i, j] == '#')
                     {
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
                     }
                     else if (_map[i, j] == '$')
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.BackgroundColor = ConsoleColor.Yellow;
                     }
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.White;
+                        Console.BackgroundColor = ConsoleColor.Black;
                     }
                     Console.Write(_map[i, j]);
                 }
                 Console.WriteLine();
             }
-        }
+        }*/
 
         public bool OnBush(Player player)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,17 @@ namespace Projet_C_sharp
         protected int _BuffDefense;    //{ get; set; }
 
 
-
         public Entite()
         {
+            _BuffAttack = 0;
+            _BuffDefense = 0;
+        }
 
+        public Entite(string type_name)
+        {
+            entity_type(type_name);
+            _BuffAttack = 0;
+            _BuffDefense = 0;
         }
 
         public void entity_type(string n_type)
@@ -37,9 +45,6 @@ namespace Projet_C_sharp
                     _Attack= 15;
                     _Agility = 11;
                     _Tag = "chevalier";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
                 
                 case "archer":
@@ -49,9 +54,6 @@ namespace Projet_C_sharp
                     _Attack = 11;
                     _Agility = 35;
                     _Tag = "archer";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
 
                 case "mage":
@@ -61,9 +63,6 @@ namespace Projet_C_sharp
                     _Attack = 13;
                     _Agility = 18;
                     _Tag = "mage";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
 
                 case "Loup":           //Enemie
@@ -73,9 +72,6 @@ namespace Projet_C_sharp
                     _Attack = 8;
                     _Agility = 22;
                     _Tag = "Loup";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
 
                 case "Gobelin":
@@ -85,9 +81,6 @@ namespace Projet_C_sharp
                     _Attack = 11;
                     _Agility = 18;
                     _Tag = "Gobelin";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
 
                 case "Orc":
@@ -97,9 +90,6 @@ namespace Projet_C_sharp
                     _Attack = 13;
                     _Agility = 3;
                     _Tag = "Orc";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
 
                 case "Mage_noir":
@@ -109,9 +99,6 @@ namespace Projet_C_sharp
                     _Attack = 999;
                     _Agility = 99;
                     _Tag = "Mage_noir";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
 
             }
