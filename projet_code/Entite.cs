@@ -9,6 +9,7 @@ namespace Projet_C_sharp
     internal class Entite
     {
         protected int _Hp;         //{ get; set; }
+        protected static int _HpMax;
         protected int _Mana;       //{ get; set; }
         protected int _Defense;    //{ get; set; }
         protected int _Attack;     //{ get; set; }
@@ -23,6 +24,17 @@ namespace Projet_C_sharp
 
         public Entite()
         {
+            _BuffAttack = 0;
+            _BuffDefense = 0;
+        }
+        public Entite(string type_name)
+        {
+            entity_type(type_name);
+            _BuffAttack = 0;
+            _BuffDefense = 0;
+        }
+        ~Entite()
+        {
 
         }
 
@@ -32,38 +44,32 @@ namespace Projet_C_sharp
             {
                 case "chevalier":       //Equipe Allie
                     _Hp = 170;
+                    _HpMax = _Hp;
                     _Mana = 0;
                     _Defense = 12;
                     _Attack= 15;
                     _Agility = 11;
                     _Tag = "chevalier";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
                 
                 case "archer":
                     _Hp = 90;
+                    _HpMax = _Hp;
                     _Mana = 12;
                     _Defense = 7;
                     _Attack = 11;
                     _Agility = 35;
                     _Tag = "archer";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
 
                 case "mage":
                     _Hp = 110;
+                    _HpMax = _Hp;
                     _Mana = 60;
                     _Defense = 5;
                     _Attack = 13;
                     _Agility = 18;
                     _Tag = "mage";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
 
                 case "Loup":           //Enemie
@@ -73,9 +79,6 @@ namespace Projet_C_sharp
                     _Attack = 8;
                     _Agility = 22;
                     _Tag = "Loup";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
 
                 case "Gobelin":
@@ -85,9 +88,6 @@ namespace Projet_C_sharp
                     _Attack = 11;
                     _Agility = 18;
                     _Tag = "Gobelin";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
 
                 case "Orc":
@@ -97,9 +97,6 @@ namespace Projet_C_sharp
                     _Attack = 13;
                     _Agility = 3;
                     _Tag = "Orc";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
 
                 case "Mage_noir":
@@ -109,9 +106,6 @@ namespace Projet_C_sharp
                     _Attack = 999;
                     _Agility = 99;
                     _Tag = "Mage_noir";
-
-                    _BuffAttack = 0;
-                    _BuffDefense = 0;
                     break;
 
             }
@@ -120,6 +114,21 @@ namespace Projet_C_sharp
         public void lostHp(int attack)
         {
             _Hp -= attack;
+        }
+
+        public void getHp()
+        {
+            Random aleatoire = new Random();
+            int vie = aleatoire.Next(30, 60);
+            if (_Hp + vie > _HpMax)
+            {
+                _Hp = _HpMax;
+            }
+            else
+            {
+                _Hp += vie;
+            }
+
         }
 
         public int death_test()
