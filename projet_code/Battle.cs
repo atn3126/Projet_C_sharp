@@ -61,7 +61,7 @@ namespace Projet_C_sharp
                 {
                     Console.WriteLine("                           YOU                                                        ENEMY\n\n");
                     Console.WriteLine("                         " + player.Current_p() + "                                                     " + enemy);
-                    Console.WriteLine("\n                         HP : " + equipe.chevalier._Hp + "                                                     HP : " + monster._Hp);
+                    Console.WriteLine("\n                         HP : " +  + "                                                     HP : " + monster._Hp);
                 }
                 for (int j = 0; j < _battle.GetLength(1); j++)
                 {
