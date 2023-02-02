@@ -50,16 +50,18 @@ namespace Projet_C_sharp
 
                 while (statut_inventaire == true)  //boucle d'inventaire jusqu'a que la touche 'tab' soit de nouveau appuyer
                 {
+                    if  (inventaire.Inventory(equipe) == 1)
+                    {
+                        statut_inventaire = false;
+                    }
 
-                    inventaire.Inventory(equipe);
-
-                    statut = Console.ReadKey();
+                    /*statut = Console.ReadKey();
 
                     if (statut.Key == ConsoleKey.Tab)   //Ferme l'inventaire
                     {
                         statut_inventaire = false;             
                     }
-
+                    */
                 }
 
                 while (statut_pause == true)               //boucle de pause si jusqu'a que la touche 'Echap' soit de nouveau appuyer
