@@ -10,6 +10,7 @@ namespace Projet_C_sharp
             Map carte = new Map(player);
             Menu_P menu_p = new Menu_P();
             Equipe equipe = new Equipe();
+            bool _inBattle = false;
             ClassInventaire inventaire = new ClassInventaire();
             bool statut_game = false;
             bool statut_menu = true;
@@ -81,6 +82,21 @@ namespace Projet_C_sharp
                 statut = Console.ReadKey();
 
                 player.Deplacement(statut);
+
+                if (carte.OnBush(player) == true)
+                {
+                    Random random = new Random();
+                    if (random.Next(0, 100) < 4)
+                    {
+                        Battle battle = new Battle(equipe);
+                        _inBattle = true;
+                    }
+                }
+
+                while (_inBattle== true)
+                {
+                    
+                }
 
                 if (statut.Key == ConsoleKey.Escape)       //Ouvre la pause si 'Echap' est appuyé
                 {

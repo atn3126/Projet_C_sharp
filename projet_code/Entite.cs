@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,18 +9,18 @@ namespace Projet_C_sharp
 {
     internal class Entite
     {
-        protected int _Hp;         //{ get; set; }
-        protected static int _HpMax;
-        protected int _Mana;       //{ get; set; }
-        protected int _Defense;    //{ get; set; }
-        protected int _Attack;     //{ get; set; }
-        protected int _Agility;    //{ get; set; }
-        protected string _Tag;     //{ get; set; }
+        public int _Hp;         //{ get; set; }
+        public int _HpMax;         //{ get; set; }
+        public int _Mana;       //{ get; set; }
+        public int _ManaMax;       //{ get; set; }
+        public int _Defense;    //{ get; set; }
+        public int _Attack;     //{ get; set; }
+        public int _Agility;    //{ get; set; }
+        public string _Tag;     //{ get; set; }
 
 
-        protected int _BuffAttack;     //{ get; set; }
-        protected int _BuffDefense;    //{ get; set; }
-
+        public int _BuffAttack;     //{ get; set; }
+        public int _BuffDefense;    //{ get; set; }
 
 
         public Entite()
@@ -27,6 +28,7 @@ namespace Projet_C_sharp
             _BuffAttack = 0;
             _BuffDefense = 0;
         }
+
         public Entite(string type_name)
         {
             entity_type(type_name);
@@ -35,7 +37,6 @@ namespace Projet_C_sharp
         }
         ~Entite()
         {
-
         }
 
         public void entity_type(string n_type)
@@ -74,6 +75,7 @@ namespace Projet_C_sharp
 
                 case "Loup":           //Enemie
                     _Hp = 50;
+                    _HpMax = _Hp;
                     _Mana = 0;
                     _Defense = 5;
                     _Attack = 8;
@@ -83,6 +85,7 @@ namespace Projet_C_sharp
 
                 case "Gobelin":
                     _Hp = 90;
+                    _HpMax = _Hp;
                     _Mana = 0;
                     _Defense = 6;
                     _Attack = 11;
@@ -92,6 +95,7 @@ namespace Projet_C_sharp
 
                 case "Orc":
                     _Hp = 160;
+                    _HpMax = _Hp;
                     _Mana = 12;
                     _Defense = 10;
                     _Attack = 13;
@@ -101,6 +105,7 @@ namespace Projet_C_sharp
 
                 case "Mage_noir":
                     _Hp = 999;
+                    _HpMax = _Hp;
                     _Mana = 999;
                     _Defense = 999;
                     _Attack = 999;

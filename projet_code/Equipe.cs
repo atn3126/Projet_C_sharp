@@ -89,5 +89,9 @@ namespace Projet_C_sharp
             return 0;
         }
 
+        public string Current_p()
+        {
+            return current_player;
+        }
     }
 }
