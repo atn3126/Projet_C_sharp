@@ -9,22 +9,19 @@ namespace Projet_C_sharp
     
     internal class Equipe : Entite
     {
+
         private string[] list_equipe = new string[3];
-        string current_player;
+        private string current_player;
+        Entite chevalier = new Entite("chevalier");            
+        Entite archer = new Entite("archer");
+        Entite mage = new Entite("mage");
+
         public Equipe()
         {
-            Entite chevalier = new Entite("chevalier");
             list_equipe[0] = "chevalier";
-            current_player = "chevalier";
-
-
-            Entite archer = new Entite("archer");
             list_equipe[1] = "archer";
-
-            Entite mage = new Entite("mage");
             list_equipe[2] = "mage";
-
-
+            current_player = "chevalier";
         }
         public void lost_crew()
         {
@@ -39,14 +36,46 @@ namespace Projet_C_sharp
                 i++;
             }
         }
-        public void equipe_switch()
-        {
-            string a;
-            a = Console.ReadLine();
 
-            current_player = a ; 
+        public Entite current_entity()
+        {
+            switch (current_player)
+            {
+                case "chevalier":
+                    return chevalier;
+                case "archer":
+                    return archer;
+                case "mage":
+                    return mage;
+            }
+            Console.WriteLine("Erreur de chargement du joueur actuelle");
+            return chevalier;
         }
 
+        public void equipe_switch()
+        {
+            ConsoleKeyInfo statut;
+            string a;
+            statut = Console.ReadKey();
+
+            if (statut.Key == ConsoleKey.D1)
+            {
+                a = "chevalier";
+            }
+            else if (statut.Key == ConsoleKey.D2)
+            {
+                a = "archer";
+            }
+            else
+            {
+                a = "mage";
+            }
+            current_player = a ;
+        }
+        public string return_player()
+        {
+            return current_player;
+        }
         public int game_over()
         {
             if (list_equipe[0] == "mort" && list_equipe[1] == "mort" && list_equipe[2] == "mort")

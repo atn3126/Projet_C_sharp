@@ -33,6 +33,15 @@ namespace Projet_C_sharp
             _BuffAttack = 0;
             _BuffDefense = 0;
         }
+        ~Entite()
+        {
+
+        public Entite(string type_name)
+        {
+            entity_type(type_name);
+            _BuffAttack = 0;
+            _BuffDefense = 0;
+        }
 
         public void entity_type(string n_type)
         {
@@ -40,6 +49,7 @@ namespace Projet_C_sharp
             {
                 case "chevalier":       //Equipe Allie
                     _Hp = 170;
+                    _HpMax = _Hp;
                     _Mana = 0;
                     _Defense = 12;
                     _Attack= 15;
@@ -49,6 +59,7 @@ namespace Projet_C_sharp
                 
                 case "archer":
                     _Hp = 90;
+                    _HpMax = _Hp;
                     _Mana = 12;
                     _Defense = 7;
                     _Attack = 11;
@@ -58,6 +69,7 @@ namespace Projet_C_sharp
 
                 case "mage":
                     _Hp = 110;
+                    _HpMax = _Hp;
                     _Mana = 60;
                     _Defense = 5;
                     _Attack = 13;
@@ -107,6 +119,21 @@ namespace Projet_C_sharp
         public void lostHp(int attack)
         {
             _Hp -= attack;
+        }
+
+        public void getHp()
+        {
+            Random aleatoire = new Random();
+            int vie = aleatoire.Next(30, 60);
+            if (_Hp + vie > _HpMax)
+            {
+                _Hp = _HpMax;
+            }
+            else
+            {
+                _Hp += vie;
+            }
+
         }
 
         public int death_test()
