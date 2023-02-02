@@ -109,7 +109,7 @@ namespace Projet_C_sharp
                     {
                         if (_chest1 == false)
                         {
-                            inventaire.random_item(player);
+                            inventaire.random_item();
                             _chest1 = true;
                         }
                         else
@@ -121,7 +121,7 @@ namespace Projet_C_sharp
                     {
                         if (_chest2 == false)
                         {
-                            inventaire.random_item(player);
+                            inventaire.random_item();
                             _chest2 = true;
                         }
                         else
@@ -133,7 +133,7 @@ namespace Projet_C_sharp
                     {
                         if (_chest3 == false)
                         {
-                            inventaire.random_item(player);
+                            inventaire.random_item();
                             _chest3 = true;
                         }
                         else
