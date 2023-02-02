@@ -52,8 +52,12 @@ namespace Projet_C_sharp
             return chevalier;
         }
 
-        public void equipe_switch()
+        public void equipe_switch(Equipe equipe)
         {
+            Console.Clear();
+            Console.WriteLine("Vous jouez actuellement avec "+equipe.current_player);
+            Console.WriteLine("Choisissez quel caractère vous voulez utiliser :");
+            Console.WriteLine("1) Chevalier \n2) Archer \n3) Mage ");
             ConsoleKeyInfo statut;
             string a;
             statut = Console.ReadKey();

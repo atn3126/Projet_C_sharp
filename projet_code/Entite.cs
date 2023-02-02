@@ -116,12 +116,12 @@ namespace Projet_C_sharp
             }
         }
 
-        public void lostHp(int attack)
+        public void lostHp(int attack)              //prend une attaque est perd de la vie
         {
             _Hp -= attack;
         }
 
-        public void getHp()
+        public void giveHp()                         //utilisation de la potion de vie
         {
             Random aleatoire = new Random();
             int vie = aleatoire.Next(30, 60);
@@ -136,6 +136,23 @@ namespace Projet_C_sharp
 
         }
 
+        public int getHp()
+        {
+            return _Hp;
+        }
+
+        public int getAttack()
+        {
+            return _Attack;
+        }
+
+        public void giveAttackBuff()                 //utilisation de la potion d'attaque
+        {
+            Random aleatoire = new Random();
+            int buff = aleatoire.Next(2, 5);
+            _BuffAttack += buff;
+        }
+
         public int death_test()
         {
             if (_Hp <= 0) 
@@ -145,7 +162,7 @@ namespace Projet_C_sharp
             return 0;
         }
 
-        public int attack_test()
+        public int attack_test()                    //teste si l'entité esquive
         {
             Random aleatoire = new Random();
             int esquive = aleatoire.Next(0, 100);

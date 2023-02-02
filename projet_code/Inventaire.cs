@@ -1,5 +1,6 @@
 ﻿
 using Projet_C_sharp;
+using System;
 using System.Reflection.Metadata;
 
 namespace StringManipulation
@@ -56,64 +57,81 @@ namespace StringManipulation
 
         public int Inventory(Equipe equipe)
         {
-            ConsoleKeyInfo statut;
-            Console.Clear();
-            Console.WriteLine("Argent actuelle : ", list_item[2].count);
-            Console.WriteLine("Choisissez une action:");
-            Console.WriteLine("1) Potion de soin : ", list_item[0].count);
-            Console.WriteLine("2) Potion d'attaque : ", list_item[1].count);
-            Console.WriteLine("3) Changer de personage");
-            Console.WriteLine("4) Quitter");
-
-
-            Console.Write("\r\nSelect an option: ");
-            statut = Console.ReadKey();
-            switch (statut.Key.ToString())
+            while (true)
             {
-                case "D1":
-                    use_object(1, equipe);
-                    return 0;
-                case "D2":
-                    use_object(2, equipe);
-                    return 0;
-                case "D3":
-                    equipe.equipe_switch();
-                    return 0;
-                case "D4":
-                    return 0;
-                default:
-                    return 0;
+                ConsoleKeyInfo statut;
+                Console.Clear();
+                Console.WriteLine("Argent actuelle : "+ list_item[2].count + " ; Potion de soin: "+ list_item[0].count + " ; Potion d'attaque : "+ list_item[1].count+"\n");
+                Console.WriteLine("Choisissez une action:");
+                Console.WriteLine("1) Utiliser une potion");
+                Console.WriteLine("2) Changer de personage");
+                Console.WriteLine("3) Retour");
+
+
+                //Console.Write("\r\nSelect an option: ");
+                statut = Console.ReadKey();
+                switch (statut.Key.ToString())
+                {
+                    case "D1":
+                        Console.Clear();
+                        use_object(equipe);
+                        return 0;
+                    case "D2":
+                        equipe.equipe_switch(equipe);
+                        return 0;
+                    case "D3":
+                        return 1;
+
+                }           
             }
         }
-        public int use_object(int i, Equipe equipe)
+        public int use_object(Equipe equipe)
         {
-            if (list_item[0].count <= 0)
+            while (true)
             {
-                Console.WriteLine("Vous n'avez plus de cette objet");
-                return 0;
-            };
+                ConsoleKeyInfo statut;
+                int choix = -1;
+                Console.WriteLine("Potion de soin: " + list_item[0].count + " ; Potion d'attaque : " + list_item[1].count + "\n");
+                Console.WriteLine("HP actuelle : " + equipe.current_entity().getHp() + " ; Attaque actuelle : " + equipe.current_entity().getAttack() + "\n");
+                Console.WriteLine("Quel potion voulez-vous utiliser ?");
+                Console.WriteLine("1) Potion de vie \n2) Potion d'attaque \n3) Retour");
 
-            switch (i)
-            {
-                case 0:
-                    list_item[0].count--;
-                    equipe.current_entity().lostHp(5);
-                    break;
-                case 1:
-                    list_item[1].count--;
+                statut = Console.ReadKey();
+                if (statut.Key == ConsoleKey.D1)
+                {
+                    choix = 0;
+                }
+                else if (statut.Key == ConsoleKey.D2)
+                {
+                    choix = 1;
+                }
+                else
+                {
+                    return 0;
+                }
 
-                    break; 
+
+                if (list_item[choix].count <= 0)
+                {
+                    Console.Clear();
+                    Console.WriteLine("\nVous n'avez plus de cette objet \n");
+                }
+                else
+                {
+                    switch (choix)
+                    {
+                        case 0:
+                            list_item[choix].count--;
+                            equipe.current_entity().giveHp();
+                            return 0;
+                        case 1:
+                            list_item[choix].count--;
+                            equipe.current_entity().giveAttackBuff();
+                            return 0;
+                    }    
+                }
             }
-            return 0;
         }
-
-
-
-
-
-
-
-
 
 
         /*
