@@ -13,28 +13,33 @@ namespace Projet_C_sharp
         string enemy;
         Entite monster;
         Equipe player;
+        Entite p_stats;
+        int index1 = 0;
+        List<string> choices;
 
         public Battle(Equipe equipe) 
         {
             Console.Clear();
-            _battle = new char[21, 150];
+            _battle = new char[13, 150];
             Random random = new Random();
             int i = random.Next(0, 100);
-            if (random.Next(0, 100) < 50)
+            if (i < 50)
                 enemy = "Loup";
-            else if (random.Next(0, 100) < 85)
+            else if (i < 85)
                 enemy = "Gobelin";
-            else if (random.Next(0, 100) < 99)
+            else if (i < 99)
                 enemy = "Orc";
             else
                 enemy = "Mage_noir";
             monster = new Entite(enemy);
             player = equipe;
+            p_stats = player.current_entity();
             Init();
         }
 
         public int Init()
         {
+            Console.Clear();
             string[] lines = System.IO.File.ReadAllLines(@"..\..\..\battle.txt");
             int x = 0;
             foreach (string line in lines)
@@ -60,14 +65,48 @@ namespace Projet_C_sharp
                 if (i == 7)
                 {
                     Console.WriteLine("                           YOU                                                        ENEMY\n\n");
-                    Console.WriteLine("                         " + player.Current_p() + "                                                     " + enemy);
-                    Console.WriteLine("\n                         HP : " +  + "                                                     HP : " + monster._Hp);
+                    Console.WriteLine("                         " + player.Current_p() + "                                                    " + enemy);
+                    Console.WriteLine("\n                         HP : " + p_stats._Hp + " / " + p_stats._HpMax + "                                               HP : " + monster._Hp + " / " + monster._HpMax);
+                    Console.WriteLine("                         MP : " + p_stats._Mana + " / " + p_stats._ManaMax + "                                                   MP : " + monster._Mana + " / " + monster._ManaMax);
+                    Console.WriteLine("\n                         Attack : " + p_stats._Attack + "                                                  Attack : " + monster._Attack);
+                    Console.WriteLine("                         Defense : " + p_stats._Defense + "                                                 Defense : " + monster._Defense);
                 }
                 for (int j = 0; j < _battle.GetLength(1); j++)
                 {
                     Console.Write(_battle[i, j]);
                 }
                 Console.WriteLine();
+            }
+            ActionMenu();
+        }
+
+        public void ActionMenu()
+        {
+            choices = new List<string>() { "Attack", "Magic", "Inventory", "Flee" };
+            ConsoleKeyInfo keyInfo;
+            keyInfo= Console.ReadKey();
+            if (keyInfo.Key == ConsoleKey.RightArrow)
+            {
+                if (index1 + 1 < 4)
+                {
+                    index1++;
+                }
+            }
+            if (keyInfo.Key == ConsoleKey.LeftArrow)
+            {
+                if (index1 - 1 >= 0)
+                {
+                    index1--;
+                }
+            }
+            for (int i = 0; i < choices.Count(); i++) 
+            {
+                Console.Write("                ");
+                if (i == index1)
+                    Console.Write("  >");
+                else
+                    Console.Write("   ");
+                Console.Write(choices[i]);
             }
         }
     }
