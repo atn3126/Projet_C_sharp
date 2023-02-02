@@ -37,7 +37,7 @@ namespace Projet_C_sharp
             Init();
         }
 
-        public int Init()
+        public void Init()
         {
             Console.Clear();
             string[] lines = System.IO.File.ReadAllLines(@"..\..\..\battle.txt");
@@ -53,9 +53,7 @@ namespace Projet_C_sharp
                 x++;
             }
             Console.WriteLine("\n      You encounter " + enemy + ".");
-            Affichage();
-
-            return 0;
+            BattleLoop();
         }
 
         public void Affichage()
@@ -77,12 +75,20 @@ namespace Projet_C_sharp
                 }
                 Console.WriteLine();
             }
-            ActionMenu();
         }
 
         public void ActionMenu()
         {
             choices = new List<string>() { "Attack", "Magic", "Inventory", "Flee" };
+            for (int i = 0; i < choices.Count(); i++)
+            {
+                Console.Write("                ");
+                if (i == index1)
+                    Console.Write("  >");
+                else
+                    Console.Write("   ");
+                Console.Write(choices[i]);
+            }
             ConsoleKeyInfo keyInfo;
             keyInfo= Console.ReadKey();
             if (keyInfo.Key == ConsoleKey.RightArrow)
@@ -99,14 +105,17 @@ namespace Projet_C_sharp
                     index1--;
                 }
             }
-            for (int i = 0; i < choices.Count(); i++) 
+            
+        }
+
+        public void BattleLoop()
+        {
+            bool _inBattle = true;
+            while (_inBattle == true) 
             {
-                Console.Write("                ");
-                if (i == index1)
-                    Console.Write("  >");
-                else
-                    Console.Write("   ");
-                Console.Write(choices[i]);
+                Affichage();
+                ActionMenu();
+                Console.Clear();
             }
         }
     }
