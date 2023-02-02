@@ -19,7 +19,7 @@ namespace Projet_C_sharp
         {
             ConsoleKeyInfo statut;
             
-            Console.Clear();
+            //Console.Clear();
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1) Play");
             Console.WriteLine("2) Options");

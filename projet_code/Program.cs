@@ -16,7 +16,17 @@ namespace Projet_C_sharp
             bool statut_menu = true;
             bool statut_pause = false;
             bool statut_inventaire = false;
+
+            bool _chest1 = false;
+            bool _chest2 = false;
+            bool _chest3 = false;
+
+
             ConsoleKeyInfo statut;
+
+
+
+
 
             
             while (statut_menu == true)        //boucle menu principal jusqu'a que le "jeu" se lance
@@ -28,12 +38,11 @@ namespace Projet_C_sharp
 
                         statut_menu = false;
                         statut_game = true;
-                        Console.Clear();
-                        Console.WriteLine();
                         break;
 
                     case "D2":
-                        statut_menu = false;
+                        //statut_menu = false;
+                        inventaire.random_item(player);
                         break;
 
                     case "D3":
@@ -79,8 +88,8 @@ namespace Projet_C_sharp
 
                 carte.Update(player);
                 carte.Affichage(player);
-                statut = Console.ReadKey();
 
+                statut = Console.ReadKey();
                 player.Deplacement(statut);
 
                 if (carte.OnBush(player) == true)
@@ -92,6 +101,49 @@ namespace Projet_C_sharp
                         _inBattle = true;
                     }
                 }
+
+
+                if (carte.OnChest(player) == true)
+                {
+                    if (player.x == 11 && player.y == 82)
+                    {
+                        if (_chest1 == false)
+                        {
+                            inventaire.random_item(player);
+                            _chest1 = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Vous avez déjà ouvert ce coffre");
+                        }
+                    }
+                    if (player.x == 20 && player.y == 199)
+                    {
+                        if (_chest2 == false)
+                        {
+                            inventaire.random_item(player);
+                            _chest2 = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Vous avez déjà ouvert ce coffre");
+                        }
+                    }
+                    if (player.x == 55 && player.y == 232)
+                    {
+                        if (_chest3 == false)
+                        {
+                            inventaire.random_item(player);
+                            _chest3 = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Vous avez déjà ouver ce coffre");
+                        }
+                    }
+                }
+
+
 
                 while (_inBattle== true)
                 {

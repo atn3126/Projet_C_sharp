@@ -116,6 +116,8 @@ namespace Projet_C_sharp
                 }
                 Console.WriteLine();
             }
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
         }
 
         /*public void Affichage()
@@ -150,25 +152,29 @@ namespace Projet_C_sharp
         {
             return _map[player.x, player.y] == '*';
         }
-
-       /* public void AffichePlayer(Player player)
+        public bool OnChest(Player player)
         {
-            for (int i = 0; i < _map.GetLength(0); i++)
-            {
-                for (int j = 0; j < _map.GetLength(1); j++)
-                {
-                    if (player.x == i && player.y == j)
-                    {
-                        Console.Write('0');
-                    }
-                    else
-                    {
-                        Console.Write(' ');
-                    }
-                }
-                Console.WriteLine();
-            }
-        }*/
+            return _map[player.x, player.y] == '$';
+        }
+
+        /* public void AffichePlayer(Player player)
+         {
+             for (int i = 0; i < _map.GetLength(0); i++)
+             {
+                 for (int j = 0; j < _map.GetLength(1); j++)
+                 {
+                     if (player.x == i && player.y == j)
+                     {
+                         Console.Write('0');
+                     }
+                     else
+                     {
+                         Console.Write(' ');
+                     }
+                 }
+                 Console.WriteLine();
+             }
+         }*/
 
 
         //Input pour afficher le Menu pause et l'invenataire ! NE PAS TOUCHER !

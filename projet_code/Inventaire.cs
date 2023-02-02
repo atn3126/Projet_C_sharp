@@ -19,20 +19,20 @@ namespace StringManipulation
             item potion_soin = new item();
             potion_soin.tag = "p_soin";
             potion_soin.count = 0;
-            ajout_item(potion_soin);
+            ajout_item_list(potion_soin);
 
             item potion_attaque = new item();
             potion_attaque.tag = "p_attaque";
             potion_attaque.count = 0;
-            ajout_item(potion_attaque);
+            ajout_item_list(potion_attaque);
 
             item argent = new item();
             argent.tag = "argent";
             argent.count = 0;
-            ajout_item(argent);
+            ajout_item_list(argent);
 
         }
-        public void ajout_item(item objet)
+        public void ajout_item_list(item objet)
         {
             list_item.Add(objet);
         }
@@ -85,6 +85,36 @@ namespace StringManipulation
                 }           
             }
         }
+
+        public void random_item()
+        {
+            ConsoleKeyInfo statut;
+            Random potion = new Random();
+            Random argent = new Random();
+            int a = potion.Next(0,3);
+            int b = argent.Next(5,20);
+
+            Console.Clear() ;
+            Console.WriteLine("Vous trouvez un coffre ! Vous l'ouvrez et récupérez...");
+
+            if (a <= 1)
+            {
+                Console.WriteLine("Une potion de Vie !\n");
+                list_item[0].count ++;
+            }
+            else 
+            {
+                Console.WriteLine("Une potion d'attaque !\n");
+                list_item[1].count++;
+            }
+
+            Console.WriteLine("Ainsi que " + b + " pièce d'or !");
+            list_item[2].count += b;        
+            statut = Console.ReadKey();
+
+
+        }
+
         public int use_object(Equipe equipe)
         {
             while (true)
