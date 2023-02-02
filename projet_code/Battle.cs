@@ -11,11 +11,13 @@ namespace Projet_C_sharp
     {
         char[,] _battle;
         string enemy;
+        Entite monster;
+        Equipe player;
 
-        public Battle() 
+        public Battle(Equipe equipe) 
         {
             Console.Clear();
-            _battle = new char[27, 150];
+            _battle = new char[21, 150];
             Random random = new Random();
             int i = random.Next(0, 100);
             if (random.Next(0, 100) < 50)
@@ -26,7 +28,8 @@ namespace Projet_C_sharp
                 enemy = "Orc";
             else
                 enemy = "Mage_noir";
-            Entite monster = new Entite(enemy);
+            monster = new Entite(enemy);
+            player = equipe;
             Init();
         }
 
@@ -54,6 +57,12 @@ namespace Projet_C_sharp
         {
             for (int i = 0; i < _battle.GetLength(0); i++)
             {
+                if (i == 7)
+                {
+                    Console.WriteLine("                           YOU                                                        ENEMY\n\n");
+                    Console.WriteLine("                         " + player.Current_p() + "                                                     " + enemy);
+                    Console.WriteLine("\n                         HP : " + equipe.chevalier._Hp + "                                                     HP : " + monster._Hp);
+                }
                 for (int j = 0; j < _battle.GetLength(1); j++)
                 {
                     Console.Write(_battle[i, j]);

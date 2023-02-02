@@ -9,16 +9,16 @@ namespace Projet_C_sharp
 {
     internal class Entite
     {
-        protected int _Hp;         //{ get; set; }
-        protected int _Mana;       //{ get; set; }
-        protected int _Defense;    //{ get; set; }
-        protected int _Attack;     //{ get; set; }
-        protected int _Agility;    //{ get; set; }
-        protected string _Tag;     //{ get; set; }
+        public int _Hp;         //{ get; set; }
+        public int _Mana;       //{ get; set; }
+        public int _Defense;    //{ get; set; }
+        public int _Attack;     //{ get; set; }
+        public int _Agility;    //{ get; set; }
+        public string _Tag;     //{ get; set; }
 
 
-        protected int _BuffAttack;     //{ get; set; }
-        protected int _BuffDefense;    //{ get; set; }
+        public int _BuffAttack;     //{ get; set; }
+        public int _BuffDefense;    //{ get; set; }
 
 
         public Entite()

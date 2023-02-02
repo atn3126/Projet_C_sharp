@@ -83,7 +83,7 @@
                     Random random = new Random();
                     if (random.Next(0, 100) < 4)
                     {
-                        Battle battle = new Battle();
+                        Battle battle = new Battle(equipe);
                         _inBattle = true;
                     }
                 }
