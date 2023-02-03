@@ -42,7 +42,7 @@ namespace Projet_C_sharp
 
                     case "D2":
                         //statut_menu = false;
-                        inventaire.random_item(player);
+                        inventaire.random_item();
                         break;
 
                     case "D3":
@@ -90,15 +90,14 @@ namespace Projet_C_sharp
                 carte.Affichage(player);
 
                 statut = Console.ReadKey();
-                player.Deplacement(statut);
+                player.Deplacement(statut, carte.GetMap());
 
                 if (carte.OnBush(player) == true)
                 {
                     Random random = new Random();
-                    if (random.Next(0, 100) < 4)
+                    if (random.Next(0, 100) < 6)
                     {
-                        Battle battle = new Battle(equipe);
-                        _inBattle = true;
+                        Battle battle = new Battle(equipe, inventaire);
                     }
                 }
 
@@ -145,9 +144,9 @@ namespace Projet_C_sharp
 
 
 
-                while (_inBattle== true)
+                if (equipe.game_over() == true) 
                 {
-                    
+                    statut_game = false;
                 }
 
                 if (statut.Key == ConsoleKey.Escape)       //Ouvre la pause si 'Echap' est appuyé
@@ -160,7 +159,7 @@ namespace Projet_C_sharp
                 }
                 if (statut.Key == ConsoleKey.Backspace)       //Ferme le jeu si 'backspace' est appuyé
                 {
-                    statut_game = true;
+                    statut_game = false;
                 }
 
             }

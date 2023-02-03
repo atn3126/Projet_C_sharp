@@ -157,6 +157,11 @@ namespace Projet_C_sharp
             return _map[player.x, player.y] == '$';
         }
 
+        public char[,] GetMap()
+        {
+            return _map;
+        }
+
         /* public void AffichePlayer(Player player)
          {
              for (int i = 0; i < _map.GetLength(0); i++)

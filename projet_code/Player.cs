@@ -17,23 +17,27 @@ namespace Projet_C_sharp
             x = 51;
             y = 4;
         }
-        public void Deplacement(ConsoleKeyInfo statut)
+        public void Deplacement(ConsoleKeyInfo statut, char[,] _map)
         {
             if (statut.Key == ConsoleKey.UpArrow)
             {
-                x -= 1;
+                if (_map[x - 1,y] == ' ' || _map[x - 1, y] == '*' || _map[x - 1, y] == '$' || _map[x - 1, y] == '.' || _map[x - 1, y] == '▲')
+                    x -= 1;
             }
             if (statut.Key == ConsoleKey.DownArrow)
             {
-                x += 1;
+                if (_map[x + 1, y] == ' ' || _map[x + 1, y] == '*' || _map[x + 1, y] == '$' || _map[x + 1, y] == '.' || _map[x + 1, y] == '▲')
+                    x += 1;
             }
             if (statut.Key == ConsoleKey.LeftArrow)
             {
-                y -= 1;
+                if (_map[x, y - 1] == ' ' || _map[x, y - 1] == '*' || _map[x, y - 1] == '$' || _map[x, y - 1] == '.' || _map[x, y - 1] == '▲')
+                    y -= 1;
             }
             if (statut.Key == ConsoleKey.RightArrow)
             {
-                y += 1;
+                if (_map[x, y + 1] == ' ' || _map[x, y + 1] == '*' || _map[x, y + 1] == '$' || _map[x, y + 1] == '.' || _map[x, y + 1] == '▲')
+                    y += 1;
             }
         }
     }

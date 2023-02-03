@@ -52,6 +52,36 @@ namespace Projet_C_sharp
             return chevalier;
         }
 
+        public Entite chevalier_entity()
+        {
+            return chevalier;
+        }
+
+        public Entite archer_entity()
+        {
+            return archer;
+        }
+
+        public Entite mage_entity()
+        {
+            return mage;
+        }
+
+        public void SwitchToChevalier()
+        {
+            current_player = "chevalier";
+        }
+
+        public void SwitchToArcher()
+        {
+            current_player = "archer";
+        }
+
+        public void SwitchToMage()
+        {
+            current_player = "mage";
+        }
+
         public void equipe_switch(Equipe equipe)
         {
             Console.Clear();
@@ -76,22 +106,24 @@ namespace Projet_C_sharp
             }
             current_player = a ;
         }
-        public string return_player()
-        {
-            return current_player;
-        }
-        public int game_over()
+
+        public bool game_over()
         {
             if (list_equipe[0] == "mort" && list_equipe[1] == "mort" && list_equipe[2] == "mort")
             {
-                return 1;
+                return true;
             }
-            return 0;
+            return false;
         }
 
         public string Current_p()
         {
             return current_player;
+        }
+
+        public string GetListEquipe(int i)
+        {
+            return list_equipe[i];
         }
     }
 }

@@ -32,6 +32,7 @@ namespace StringManipulation
             ajout_item_list(argent);
 
         }
+
         public void ajout_item_list(item objet)
         {
             list_item.Add(objet);
@@ -53,6 +54,11 @@ namespace StringManipulation
 
                 default: break;
             }
+        }
+
+        public void remove(int i)
+        {
+            list_item[i].count--;
         }
 
         public int Inventory(Equipe equipe)
@@ -113,6 +119,11 @@ namespace StringManipulation
             statut = Console.ReadKey();
 
 
+        }
+
+        public int GetItemNumber(int i)
+        {
+            return list_item[i].count;
         }
 
         public int use_object(Equipe equipe)
