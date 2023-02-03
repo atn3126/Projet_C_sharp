@@ -26,7 +26,6 @@ namespace Projet_C_sharp
         {
             Player player = new Player();
             Map carte = new Map(player);
-            Menu_P menu_p = new Menu_P();
             Equipe equipe = new Equipe();
             bool _inBattle = false;
             ClassInventaire inventaire = new ClassInventaire();
