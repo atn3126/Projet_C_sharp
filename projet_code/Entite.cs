@@ -9,7 +9,7 @@ namespace Projet_C_sharp
 {
     internal class Entite
     {
-        public int _Hp;         //{ get; set; }
+        public int _Hp;       //{ get; set; }
         public int _HpMax;         //{ get; set; }
         public int _Mana;       //{ get; set; }
         public int _ManaMax;       //{ get; set; }
@@ -47,6 +47,7 @@ namespace Projet_C_sharp
                     _Hp = 170;
                     _HpMax = _Hp;
                     _Mana = 0;
+                    _ManaMax = _Mana;
                     _Defense = 12;
                     _Attack= 15;
                     _Agility = 11;
@@ -57,6 +58,7 @@ namespace Projet_C_sharp
                     _Hp = 90;
                     _HpMax = _Hp;
                     _Mana = 12;
+                    _ManaMax = _Mana;
                     _Defense = 7;
                     _Attack = 11;
                     _Agility = 35;
@@ -67,6 +69,7 @@ namespace Projet_C_sharp
                     _Hp = 110;
                     _HpMax = _Hp;
                     _Mana = 60;
+                    _ManaMax = _Mana;
                     _Defense = 5;
                     _Attack = 13;
                     _Agility = 18;
@@ -77,6 +80,7 @@ namespace Projet_C_sharp
                     _Hp = 50;
                     _HpMax = _Hp;
                     _Mana = 0;
+                    _ManaMax = _Mana;
                     _Defense = 5;
                     _Attack = 8;
                     _Agility = 22;
@@ -87,6 +91,7 @@ namespace Projet_C_sharp
                     _Hp = 90;
                     _HpMax = _Hp;
                     _Mana = 0;
+                    _ManaMax = _Mana;
                     _Defense = 6;
                     _Attack = 11;
                     _Agility = 18;
@@ -97,6 +102,7 @@ namespace Projet_C_sharp
                     _Hp = 160;
                     _HpMax = _Hp;
                     _Mana = 12;
+                    _ManaMax = _Mana;
                     _Defense = 10;
                     _Attack = 13;
                     _Agility = 3;
@@ -107,6 +113,7 @@ namespace Projet_C_sharp
                     _Hp = 999;
                     _HpMax = _Hp;
                     _Mana = 999;
+                    _ManaMax = _Mana;
                     _Defense = 999;
                     _Attack = 999;
                     _Agility = 99;
@@ -153,25 +160,25 @@ namespace Projet_C_sharp
             _BuffAttack += buff;
         }
 
-        public int death_test()
+        public bool death_test()
         {
             if (_Hp <= 0) 
             {
-                return 1;
+                return true;
             }
-            return 0;
+            return false;
         }
 
-        public int attack_test()                    //teste si l'entité esquive
+        public bool dodge_test()                    //teste si l'entité esquive
         {
             Random aleatoire = new Random();
             int esquive = aleatoire.Next(0, 100);
             if (esquive >= 90 - _Agility)
             {
-                return 1;               //Esquive avec succée
+                return true;               //Esquive avec succée
             }
 
-            return 0;                   //Echoue et sera attaqué 
+            return false;                   //Echoue et sera attaqué 
         }
 
 
