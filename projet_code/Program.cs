@@ -90,14 +90,14 @@ namespace Projet_C_sharp
                 carte.Affichage(player);
 
                 statut = Console.ReadKey();
-                player.Deplacement(statut);
+                player.Deplacement(statut, carte.GetMap());
 
                 if (carte.OnBush(player) == true)
                 {
                     Random random = new Random();
                     if (random.Next(0, 100) < 6)
                     {
-                        Battle battle = new Battle(equipe);
+                        Battle battle = new Battle(equipe, inventaire);
                     }
                 }
 

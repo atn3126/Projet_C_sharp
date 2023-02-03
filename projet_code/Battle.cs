@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StringManipulation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -13,8 +14,9 @@ namespace Projet_C_sharp
     {
         char[,] _battle;
         string enemy;
-        Entite monster;
+        ClassInventaire inventory;
         Equipe player;
+        Entite monster;
         Entite p_stats;
         Entite chevalier;
         Entite archer;
@@ -25,7 +27,7 @@ namespace Projet_C_sharp
         int damage;
         int damageEnemy;
 
-        public Battle(Equipe equipe)
+        public Battle(Equipe equipe, ClassInventaire inventaire)
         {
             choices = new List<string>() { "Attack", "Magic", "Inventory", "Switch hero", "Escape" };
             Console.Clear();
@@ -42,6 +44,7 @@ namespace Projet_C_sharp
                 enemy = "Mage_noir";
             monster = new Entite(enemy);
             player = equipe;
+            inventory = inventaire;
             p_stats = player.current_entity();
             chevalier = player.chevalier_entity();
             archer = player.archer_entity();
@@ -274,6 +277,28 @@ namespace Projet_C_sharp
                         Console.WriteLine("\n      This hero is already dead.");
                         break;
 
+                    case "Inventory":
+                        choices = new List<string>() { "Healing potion", "Attack potion", "Back" };
+                        index1 = 0;
+                        Console.WriteLine("\n      You have " + inventory.GetItemNumber(0) + "Healing potion and " + inventory.GetItemNumber(1) + " Attack potion.");
+                        break;
+
+                    case "Healing potion":
+                        choices = new List<string>() { "Attack", "Magic", "Inventory", "Switch hero", "Escape" };
+                        p_stats._Hp += 50;
+                        inventory.remove(0);
+                        index1 = 0;
+                        Console.WriteLine("\n      You healed 50 HP.");
+                        break;
+
+                    case "Attack potion":
+                        choices = new List<string>() { "Attack", "Magic", "Inventory", "Switch hero", "Escape" };
+                        p_stats._Attack += 5;
+                        inventory.remove(1);
+                        index1 = 0;
+                        Console.WriteLine("\n      You gained 5 Attack power.");
+                        break;
+
                     case "Escape":
                         _inBattle = false;
                         break;
@@ -324,9 +349,27 @@ namespace Projet_C_sharp
                 if (monster._Hp <= 0)
                 {
                     _inBattle = false;
-                    Console.WriteLine("\n      You've won!");
+                    Random randomGold = new Random();
+                    Random randomPotionH = new Random();
+                    Random randomPotionA = new Random();
+                    int g = randomGold.Next(0, 50);
+                    int h = randomPotionH.Next(0, 100);
+                    int a = randomPotionA.Next(0, 100);
+                    Console.WriteLine("\n      You win!");
+                    Console.Write("      You've won " + g + " gold");
+                    if (h < 10)
+                    {
+                        Console.Write(", 1 Healing potion");
+                        inventory.ajout_n(0);
+                    }
+                        
+                    if (a < 10)
+                    {
+                        Console.Write(", 1 Attack potion");
+                        inventory.ajout_n(1);
+                    }
                     Affichage();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(4000);
                 }
                 if (player.game_over() == true)
                 {
